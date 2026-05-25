@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#1a472a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Jedilnik">
+<title>Jedilnik · OŠ Koseze</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #1a472a;
+    --green-mid: #2d6a4f;
+    --green-light: #52b788;
+    --green-pale: #d8f3dc;
+    --cream: #faf7f2;
+    --cream-dark: #f0ebe0;
+    --text: #1c1c1c;
+    --text-muted: #6b6b6b;
+    --border: #e0d9cc;
+    --white: #ffffff;
+    --amber: #e09f3e;
+    --amber-pale: #fdf3e3;
+    --radius: 14px;
+    --safe-top: env(safe-area-inset-top);
+    --safe-bottom: env(safe-area-inset-bottom);
+  }
+
+  html { height: 100%; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--green-dark);
+    padding: calc(16px + var(--safe-top)) 20px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .header-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 3px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .refresh-btn {
+    background: rgba(255,255,255,0.12);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    flex-shrink: 0;
+    transition: background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .refresh-btn:active { background: rgba(255,255,255,0.22); }
+  .refresh-btn svg { width: 18px; height: 18px; }
+
+  .week-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 14px;
+  }
+  .week-chip svg { width: 13px; height: 13px; }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 6px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 8px 4px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 0.01em;
+  }
+
+  .tab.active {
+    background: var(--green-light);
+    color: var(--white);
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 16px 16px calc(24px + var(--safe-bottom));
+  }
+
+  /* DAY CARD */
+  .day-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: transform 0.15s;
+  }
+
+  .day-card.today {
+    border-color: var(--green-light);
+    box-shadow: 0 0 0 1px var(--green-light);
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px 10px;
+    background: var(--cream-dark);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-card.today .day-header {
+    background: var(--green-pale);
+    border-bottom-color: rgba(82,183,136,0.3);
+  }
+
+  .day-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .day-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .day-card.today .day-dot { background: var(--green-light); }
+
+  .today-badge {
+    font-size: 10px;
+    font-weight: 600;
+    background: var(--green-light);
+    color: white;
+    padding: 2px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .meal-row {
+    padding: 12px 14px;
+    border-top: 1px solid var(--border);
+  }
+  .meal-row:first-of-type { border-top: none; }
+
+  .meal-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .meal-text {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .meal-text em {
+    font-style: normal;
+    color: var(--green-mid);
+    font-weight: 500;
+  }
+
+  .allergens {
+    margin-top: 5px;
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .allergens svg { width: 11px; height: 11px; opacity: 0.6; }
+
+  /* LOADER */
+  .loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 14px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 2.5px solid var(--border);
+    border-top-color: var(--green-light);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ERROR */
+  .error-box {
+    background: var(--amber-pale);
+    border: 1px solid #f0c36d;
+    border-radius: var(--radius);
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 8px;
+  }
+  .error-box svg { width: 20px; height: 20px; color: var(--amber); flex-shrink: 0; margin-top: 1px; }
+  .error-title { font-size: 14px; font-weight: 600; color: #7a5c1e; margin-bottom: 4px; }
+  .error-msg { font-size: 13px; color: #9a7a3a; line-height: 1.5; }
+  .retry-btn {
+    margin-top: 12px;
+    padding: 9px 18px;
+    background: var(--green-dark);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* SPINNING refresh */
+  .spinning { animation: spin 0.8s linear infinite; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">Jedilnik</div>
+      <div class="header-sub">OŠ Koseze · Ljubljana</div>
+    </div>
+    <button class="refresh-btn" id="refreshBtn" onclick="loadMenu()" aria-label="Osveži">
+      <svg id="refreshIcon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+        <path d="M16 16h5v5"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="week-chip" id="weekChip">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+    </svg>
+    <span id="weekLabel">Nalagam...</span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="tab-malica" onclick="switchTab('malica')">🥐 Malica</button>
+    <button class="tab" id="tab-kosilo" onclick="switchTab('kosilo')">🍲 Kosilo</button>
+    <button class="tab" id="tab-popoldne" onclick="switchTab('popoldne')">🍌 Popoldne</button>
+  </div>
+</div>
+
+<div class="content" id="content">
+  <div class="loader">
+    <div class="spinner"></div>
+    <span>Nalagam jedilnik...</span>
+  </div>
+</div>
+
+<script>
+const DAYS = ['Ponedeljek','Torek','Sreda','Četrtek','Petek'];
+const TODAY = ['Nedelja','Ponedeljek','Torek','Sreda','Četrtek','Petek','Sobota'][new Date().getDay()];
+const TAB_LABEL = { malica: 'Malica', kosilo: 'Kosilo', popoldne: 'Popoldanska malica' };
+
+let menuData = null;
+let currentTab = 'malica';
+
+function switchTab(tab) {
+  currentTab = tab;
+  ['malica','kosilo','popoldne'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+  });
+  if (menuData) renderMenu();
+}
+
+function parseAllergens(text) {
+  const m = text.match(/\(([0-9,\s]+)\)\s*$/);
+  if (!m) return { clean: text.replace(/\*/g,'').trim(), allergens: '' };
+  return {
+    clean: text.replace(/\s*\([0-9,\s]+\)\s*$/, '').replace(/\*/g,'').trim(),
+    allergens: m[1].trim()
+  };
+}
+
+function renderMenu() {
+  const data = menuData[currentTab];
+  let html = '';
+  DAYS.forEach(day => {
+    const isToday = day === TODAY;
+    const raw = data[day] || '—';
+    const { clean, allergens } = parseAllergens(raw);
+    html += `
+    <div class="day-card${isToday ? ' today' : ''}">
+      <div class="day-header">
+        <div class="day-name">
+          <div class="day-dot"></div>
+          ${day}
+        </div>
+        ${isToday ? '<span class="today-badge">Danes</span>' : ''}
+      </div>
+      <div class="meal-row">
+        <div class="meal-label">${TAB_LABEL[currentTab]}</div>
+        <div class="meal-text">${clean}</div>
+        ${allergens ? `<div class="allergens">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Alergeni: ${allergens}
+        </div>` : ''}
+      </div>
+    </div>`;
+  });
+  document.getElementById('content').innerHTML = html;
+}
+
+async function loadMenu() {
+  document.getElementById('content').innerHTML = '<div class="loader"><div class="spinner"></div><span>Nalagam jedilnik...</span></div>';
+  document.getElementById('weekLabel').textContent = 'Nalagam...';
+  document.getElementById('refreshIcon').classList.add('spinning');
+
+  try {
+    const url = 'https://www.oskoseze.si/sl/jedilnik/';
+    const proxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);
+    const res = await fetch(proxy);
+    const json = await res.json();
+    const html = json.contents;
+
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+
+    // Extract week label
+    let weekLabel = '';
+    doc.querySelectorAll('h2').forEach(h => {
+      if (h.textContent.includes('JEDILNIK')) {
+        weekLabel = h.textContent.replace('JEDILNIK','').replace(/[()]/g,'').trim();
+      }
+    });
+
+    // Parse 3 tables
+    const tables = doc.querySelectorAll('table');
+    const keys = ['malica','kosilo','popoldne'];
+    const result = { malica:{}, kosilo:{}, popoldne:{}, weekLabel };
+
+    tables.forEach((table, ti) => {
+      if (ti > 2) return;
+      table.querySelectorAll('tr').forEach((row, ri) => {
+        if (ri === 0) return;
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 2) return;
+        const day = cells[0].textContent.trim();
+        const meal = cells[1].textContent.trim();
+        if (DAYS.includes(day)) result[keys[ti]][day] = meal;
+      });
+    });
+
+    menuData = result;
+    document.getElementById('weekLabel').textContent = weekLabel || 'Ta teden';
+    renderMenu();
+
+  } catch(e) {
+    document.getElementById('weekLabel').textContent = 'Napaka';
+    document.getElementById('content').innerHTML = `
+      <div class="error-box">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <div class="error-title">Ni mogoče naložiti jedilnika</div>
+          <div class="error-msg">Preveri internetno povezavo in poskusi znova.</div>
+          <button class="retry-btn" onclick="loadMenu()">Poskusi znova</button>
+        </div>
+      </div>`;
+  } finally {
+    document.getElementById('refreshIcon').classList.remove('spinning');
+  }
+}
+
+loadMenu();
+</script>
+</body>
+</html>
