@@ -1,24 +1,6 @@
 {
-  "weekLabel": "(posodobi se vsak ponedeljek ob 7:00)",
-  "malica": {
-    "Ponedeljek": "—",
-    "Torek": "—",
-    "Sreda": "—",
-    "Četrtek": "—",
-    "Petek": "—"
-  },
-  "kosilo": {
-    "Ponedeljek": "—",
-    "Torek": "—",
-    "Sreda": "—",
-    "Četrtek": "—",
-    "Petek": "—"
-  },
-  "popoldne": {
-    "Ponedeljek": "—",
-    "Torek": "—",
-    "Sreda": "—",
-    "Četrtek": "—",
-    "Petek": "—"
-  }
+  "malica": {},
+  "kosilo": {},
+  "popoldne": {},
+  "weekLabel": "01. 06. 2026 - 05. 06. 2026"
 }
