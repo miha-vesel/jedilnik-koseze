@@ -1,4 +1,4 @@
-import urllib.request
+import subprocess
 import json
 import re
 from html.parser import HTMLParser
@@ -26,21 +26,23 @@ class TextExtractor(HTMLParser):
         return "".join(self.text)
 
 def fetch_html():
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml",
-        "Accept-Language": "sl-SI,sl;q=0.9",
-        "Referer": "https://www.oskoseze.si/sl/",
-    }
-    req = urllib.request.Request(URL, headers=headers)
-    with urllib.request.urlopen(req, timeout=15) as r:
-        return r.read().decode("utf-8", errors="replace")
+    result = subprocess.run([
+        "curl", "-sL",
+        "-A", "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+        "-H", "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "-H", "Accept-Language: sl-SI,sl;q=0.9,en;q=0.8",
+        "-H", "Referer: https://www.oskoseze.si/sl/",
+        "--max-time", "20",
+        URL
+    ], capture_output=True, text=True)
+    if result.returncode != 0:
+        raise Exception(f"curl failed: {result.stderr}")
+    return result.stdout
 
 def parse(html):
     parser = TextExtractor()
     parser.feed(html)
     text = parser.get_text()
-
     lines = [l.strip() for l in text.splitlines() if l.strip()]
 
     # Week label
@@ -70,6 +72,41 @@ def parse(html):
                     if meal and len(meal) > 3:
                         result[keys[ti]][day] = meal
                     break
+
+    # Fallback: HTML tables
+    if not result["malica"]:
+        from html.parser import HTMLParser as HP
+        class TableParser(HP):
+            def __init__(self):
+                super().__init__()
+                self.tables = []
+                self.current_table = []
+                self.current_row = []
+                self.current_cell = []
+                self.in_cell = False
+                self.depth = 0
+            def handle_starttag(self, tag, attrs):
+                if tag == "table": self.current_table = []; self.depth += 1
+                elif tag == "tr": self.current_row = []
+                elif tag in ("td","th"): self.in_cell = True; self.current_cell = []
+            def handle_endtag(self, tag):
+                if tag == "table":
+                    self.tables.append(self.current_table)
+                    self.depth -= 1
+                elif tag == "tr" and self.current_row:
+                    self.current_table.append(self.current_row)
+                elif tag in ("td","th"):
+                    self.current_row.append(" ".join(self.current_cell).strip())
+                    self.in_cell = False
+            def handle_data(self, data):
+                if self.in_cell: self.current_cell.append(data.strip())
+
+        tp = TableParser()
+        tp.feed(html)
+        for ti, table in enumerate(tp.tables[:3]):
+            for row in table[1:]:
+                if len(row) >= 2 and row[0] in DAYS:
+                    result[keys[ti]][row[0]] = row[1]
 
     return result
 
