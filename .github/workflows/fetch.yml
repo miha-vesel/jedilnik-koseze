@@ -2,8 +2,8 @@ name: Fetch Jedilnik
 
 on:
   schedule:
-    - cron: '0 5 * * 1-5'  # vsak delovnik ob 7:00 (UTC+2)
-  workflow_dispatch:         # možnost ročnega zagona
+    - cron: '0 5 * * 1-5'
+  workflow_dispatch:
 
 jobs:
   fetch:
@@ -16,10 +16,13 @@ jobs:
       - name: Fetch jedilnik
         run: python3 fetch.py
 
+      - name: Pokazi rezultat
+        run: cat jedilnik.json
+
       - name: Commit & push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add jedilnik.json
-          git diff --cached --quiet || git commit -m "Posodobi jedilnik"
+          git diff --cached --quiet || git commit -m "Posodobi jedilnik $(date +%Y-%m-%d)"
           git push
