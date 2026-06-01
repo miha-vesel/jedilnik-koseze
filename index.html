@@ -425,22 +425,39 @@ async function loadMenu() {
       }
     });
 
-    // Parse 3 tables
-    const tables = doc.querySelectorAll('table');
     const keys = ['malica','kosilo','popoldne'];
     const result = { malica:{}, kosilo:{}, popoldne:{}, weekLabel };
 
-    tables.forEach((table, ti) => {
-      if (ti > 2) return;
-      table.querySelectorAll('tr').forEach((row, ri) => {
-        if (ri === 0) return;
-        const cells = row.querySelectorAll('td');
-        if (cells.length < 2) return;
-        const day = cells[0].textContent.trim();
-        const meal = cells[1].textContent.trim();
-        if (DAYS.includes(day)) result[keys[ti]][day] = meal;
+    // Try HTML tables first
+    const tables = doc.querySelectorAll('table');
+    if (tables.length >= 3) {
+      tables.forEach((table, ti) => {
+        if (ti > 2) return;
+        table.querySelectorAll('tr').forEach((row, ri) => {
+          if (ri === 0) return;
+          const cells = row.querySelectorAll('td');
+          if (cells.length < 2) return;
+          const day = cells[0].textContent.trim();
+          const meal = cells[1].textContent.trim();
+          if (DAYS.includes(day)) result[keys[ti]][day] = meal;
+        });
       });
-    });
+    } else {
+      // Fallback: parse markdown tables from raw text
+      const lines = html.split('\n');
+      let tableIdx = -1;
+      lines.forEach(line => {
+        if (/\|\s*DAN\s*\|/i.test(line)) { tableIdx++; return; }
+        if (tableIdx < 0 || tableIdx > 2) return;
+        if (/^\s*\|[\s\-|]+\|\s*$/.test(line)) return;
+        const m = line.match(/^\s*\|\s*(\w+)\s*\|\s*(.+?)\s*\|\s*$/);
+        if (m) {
+          const day = m[1].trim();
+          const meal = m[2].replace(/<[^>]+>/g,'').replace(/\\\*/g,'*').trim();
+          if (DAYS.includes(day)) result[keys[tableIdx]][day] = meal;
+        }
+      });
+    }
 
     menuData = result;
     document.getElementById('weekLabel').textContent = weekLabel || 'Ta teden';
