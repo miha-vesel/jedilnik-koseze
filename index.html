@@ -386,10 +386,34 @@ async function loadMenu() {
 
   try {
     const url = 'https://www.oskoseze.si/sl/jedilnik/';
-    const proxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);
-    const res = await fetch(proxy);
-    const json = await res.json();
-    const html = json.contents;
+
+    const PROXIES = [
+      u => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
+      u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+      u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+      u => `https://thingproxy.freeboard.io/fetch/${encodeURIComponent(u)}`,
+    ];
+
+    let html = null;
+    for (const proxyFn of PROXIES) {
+      try {
+        const res = await Promise.race([
+          fetch(proxyFn(url)),
+          new Promise((_,r) => setTimeout(() => r(new Error('timeout')), 7000))
+        ]);
+        if (!res.ok) continue;
+        const ct = res.headers.get('content-type') || '';
+        if (ct.includes('json')) {
+          const j = await res.json();
+          html = j.contents || j.body || null;
+        } else {
+          html = await res.text();
+        }
+        if (html && html.includes('jedilnik')) break;
+        html = null;
+      } catch(e) { continue; }
+    }
+    if (!html) throw new Error('Vsi proxy-ji so nedosegljivi');
 
     const doc = new DOMParser().parseFromString(html, 'text/html');
 
