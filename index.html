@@ -385,107 +385,12 @@ async function loadMenu() {
   document.getElementById('refreshIcon').classList.add('spinning');
 
   try {
-    const url = 'https://www.oskoseze.si/sl/jedilnik/';
+    const res = await fetch('jedilnik.json?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
 
-    const PROXIES = [
-      u => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
-      u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
-      u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
-      u => `https://thingproxy.freeboard.io/fetch/${encodeURIComponent(u)}`,
-    ];
-
-    let html = null;
-    for (const proxyFn of PROXIES) {
-      try {
-        const res = await Promise.race([
-          fetch(proxyFn(url)),
-          new Promise((_,r) => setTimeout(() => r(new Error('timeout')), 7000))
-        ]);
-        if (!res.ok) continue;
-        const ct = res.headers.get('content-type') || '';
-        if (ct.includes('json')) {
-          const j = await res.json();
-          html = j.contents || j.body || null;
-        } else {
-          html = await res.text();
-        }
-        if (html && html.includes('jedilnik')) break;
-        html = null;
-      } catch(e) { continue; }
-    }
-    if (!html) throw new Error('Vsi proxy-ji so nedosegljivi');
-
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-
-    // Extract week label
-    let weekLabel = '';
-    doc.querySelectorAll('h2').forEach(h => {
-      if (h.textContent.includes('JEDILNIK')) {
-        weekLabel = h.textContent.replace('JEDILNIK','').replace(/[()]/g,'').trim();
-      }
-    });
-
-    const keys = ['malica','kosilo','popoldne'];
-    const result = { malica:{}, kosilo:{}, popoldne:{}, weekLabel };
-
-    // Robust parser: find MALICA/KOSILO/POPOLDNE section headers, then extract day rows
-    // Works regardless of HTML tables, markdown tables, divs, or any other format
-    const plainText = doc.body ? doc.body.innerText || doc.body.textContent : html.replace(/<[^>]+>/g,' ');
-
-    // Split into 3 sections by looking for section keywords
-    const sectionPatterns = [
-      /MALICA|ZAJTRK/i,
-      /KOSILO/i,
-      /POPOLDANSK|POPOLDNE/i
-    ];
-
-    // Get all text, normalize whitespace
-    const normalized = plainText.replace(/\r/g,'').replace(/[ \t]+/g,' ');
-    const allLines = normalized.split('\n').map(l => l.trim()).filter(Boolean);
-
-    // Find indices where each section starts
-    const sectionStarts = [0,0,0];
-    allLines.forEach((line, i) => {
-      sectionPatterns.forEach((pat, pi) => {
-        if (pat.test(line) && line.length < 60) {
-          sectionStarts[pi] = i;
-        }
-      });
-    });
-
-    // For each section, extract lines that start with a day name
-    sectionStarts.forEach((start, si) => {
-      const end = sectionStarts.slice(si+1).find(s => s > start) || allLines.length;
-      const sectionLines = allLines.slice(start, end + 30);
-      sectionLines.forEach(line => {
-        DAYS.forEach(day => {
-          if (line.startsWith(day)) {
-            // Remove the day name prefix, pipes, separators
-            let meal = line.slice(day.length).replace(/^[|:\s]+/, '').replace(/\|.*$/, '').trim();
-            if (meal && meal.length > 2) result[keys[si]][day] = meal;
-          }
-        });
-      });
-    });
-
-    // Also try HTML tables as extra fallback
-    if (!Object.keys(result.malica).length) {
-      const tables = doc.querySelectorAll('table');
-      tables.forEach((table, ti) => {
-        if (ti > 2) return;
-        table.querySelectorAll('tr').forEach((row, ri) => {
-          if (ri === 0) return;
-          const cells = row.querySelectorAll('td');
-          if (cells.length < 2) return;
-          const day = cells[0].textContent.trim();
-          const meal = cells[1].textContent.trim();
-          if (DAYS.includes(day)) result[keys[ti]][day] = meal;
-        });
-      });
-    }
-
-    menuData = result;
-    document.getElementById('weekLabel').textContent = weekLabel || 'Ta teden';
+    menuData = data;
+    document.getElementById('weekLabel').textContent = data.weekLabel || 'Ta teden';
     renderMenu();
 
   } catch(e) {
@@ -503,7 +408,6 @@ async function loadMenu() {
     document.getElementById('refreshIcon').classList.remove('spinning');
   }
 }
-
 loadMenu();
 </script>
 </body>

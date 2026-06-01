@@ -1,0 +1,24 @@
+{
+  "weekLabel": "(posodobi se vsak ponedeljek ob 7:00)",
+  "malica": {
+    "Ponedeljek": "—",
+    "Torek": "—",
+    "Sreda": "—",
+    "Četrtek": "—",
+    "Petek": "—"
+  },
+  "kosilo": {
+    "Ponedeljek": "—",
+    "Torek": "—",
+    "Sreda": "—",
+    "Četrtek": "—",
+    "Petek": "—"
+  },
+  "popoldne": {
+    "Ponedeljek": "—",
+    "Torek": "—",
+    "Sreda": "—",
+    "Četrtek": "—",
+    "Petek": "—"
+  }
+}
