@@ -1,6 +1,24 @@
 {
-  "malica": {},
-  "kosilo": {},
-  "popoldne": {},
-  "weekLabel": ""
+  "malica": {
+    "Ponedeljek": "mesni burek, probiotični navadni jogurt, sadje (1, 3, 7)",
+    "Torek": "pisani kruh, maslo, med, bio mleko (1, 7)",
+    "Sreda": "pisani kruh, sir Jošt, eko paprika, čaj, ŠS SADJA (1, 7)",
+    "Četrtek": "ržen kruh, tunin namaz, rukola sok 100% jabolko (1, 4, 7)",
+    "Petek": "koruzni kosmiči, mleko, banana (1, 7)"
+  },
+  "kosilo": {
+    "Ponedeljek": "paradižnikova juha, rižota (3žita) s šparglji in parmezanom , motovilec s paradižnikom (1, 3, 7, 9)",
+    "Torek": "cvetačna juha, piščančji paprikaš, svaljki z dodatkom ržene moke, mešana solata (1, 3, 7)",
+    "Sreda": "gobova juha ,mesni kaneloni, pire krompir , brokoli, paradižnik v solati (1, 7, 9)",
+    "Četrtek": "ljubljanska obara z žličniki, *bio cesarski pirih buhtelj z marmelado (1, 3, 9)",
+    "Petek": "milijon juha, zelenjavni polpet, pražen krompir, zeljna solata s fižolom (1, 3, 7, 9)"
+  },
+  "popoldne": {
+    "Ponedeljek": "prepečenec, češnje (1, 5, 6, 7, 8)",
+    "Torek": "črna pletenka,* bio korenje (1)",
+    "Sreda": "jogurt na grški način z sadjem (7, 8)",
+    "Četrtek": "hrustljavi kruhki-crispy (navadni), maline",
+    "Petek": "slanik, marelica (1)"
+  },
+  "weekLabel": "08. 06. 2026 - 12. 06. 2026"
 }
