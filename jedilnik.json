@@ -1,24 +1,6 @@
 {
-  "malica": {
-    "Ponedeljek": "črna žemlja, sir Gauda, rukola, limonada, sadje (1, 7)",
-    "Torek": "pirin mlečni zdrob s kakavovim posipom (1, 7)",
-    "Sreda": "*eko ovčji jogurt marelica-breskev, sezamova štručka (1, 7, 11), ŠS SADJA",
-    "Četrtek": "graham žemlja, posebna piščančja salama, sveža kumara, paradižnik, limonada (1, 7)",
-    "Petek": "bio mafin s korenjem, čaj, sadje (1, 3, 7)"
-  },
-  "kosilo": {
-    "Ponedeljek": "milijonska juha, goveji čevapčiči, džuveč riž, grška solata (1, 3, 7)",
-    "Torek": "ribji brodet, zeliščna polenta, zelena solata z motovilcem (1, 4, 7, 14)",
-    "Sreda": "zelenjavna kremna juha z zlatimi kroglicami, mesna lazanja, zelena solata z motovilcem (1, 3, 7, 9)",
-    "Četrtek": "zelenjavna enolončnica z ribano kašo in puranom, carski praženec (1, 3, 7)",
-    "Petek": "lečina juha, ocvrt piščanec, blitva s krompirjem (1, 3, 4, 7)"
-  },
-  "popoldne": {
-    "Ponedeljek": "nektarina, mešanica oreščkov (8, 5)",
-    "Torek": "*bio pirini keksi brez dodanega sladkorja, češnje (1, 3, 7)",
-    "Sreda": "makova štručka (1)",
-    "Četrtek": "grški jogurt s sadjem (7)",
-    "Petek": "prepečenec, 100% sadni sok (1)"
-  },
-  "weekLabel": "01. 06. 2026 - 05. 06. 2026"
+  "malica": {},
+  "kosilo": {},
+  "popoldne": {},
+  "weekLabel": ""
 }
