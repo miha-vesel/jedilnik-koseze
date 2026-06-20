@@ -1,24 +1,24 @@
 {
   "malica": {
-    "Ponedeljek": "polnozrnati kruh, avokadov namaz, čaj, sadje (1, 3, 7, 8)",
-    "Torek": "črna štručka, telečje hrenovke, gorčica, čaj (1, 6, 10)",
-    "Sreda": "ovseni kruh, maslo, *bio jagodna marmelada, *bio mleko, ŠS SADJA (1, 7)",
-    "Četrtek": "pirin zdrob s kakavom (1, 3, 7)",
-    "Petek": "pisani kruh, trdo kuhano jajce, sveže kumare in mini paradižniki, sadni čaj, sadje (1, 3)"
+    "Ponedeljek": "črna bombeta, polpet z brokolijem in cvetačo, zelena solata, paradižnik, sadni čaj, sadje (1, 3, 6, 7)",
+    "Torek": "polnozrnati kosmiči, mleko, banana (1, 7)",
+    "Sreda": "sirova štručka, jabolčni sok 100% sadni delež (redčen z vodo) (1, 7)",
+    "Četrtek": "/",
+    "Petek": "/"
   },
   "kosilo": {
-    "Ponedeljek": "korenčkova juha, kuskus s puranom in zelenjavo, kumarična solata s kislo smetano (1, 7, 9)",
-    "Torek": "kruhovi cmoki, goveji golaž, zelena solata s koruzo (1, 3, 7)",
-    "Sreda": "koruzna juha, mehiške tortilije z zelenjavo in piščancem (1, 7, 9)",
-    "Četrtek": "testenine (metuljčki) s paradižnikovo tunino omako, mešana solata s koruzo, mlečni sladoled v lončku (1, 4, 7)",
-    "Petek": "poletna zelenjavna mineštra s klobaso za kuhanje (sv.meso), ovsen kruh, *bio sadni mafin (1, 3, 7, 9)"
+    "Ponedeljek": "mesna enolončnica s krompirjem in tremi vrstami paprike, pisani kruh, čokoladni puding (1, 3, 7, 9)",
+    "Torek": "pirini peresniki z bolonjsko omako, mešana solata (1)",
+    "Sreda": "piščančji ražnjiči, džuveč riž, zelena solata, sadno-žitna rezina (1, 7)",
+    "Četrtek": "/",
+    "Petek": "/"
   },
   "popoldne": {
-    "Ponedeljek": "hrustljavi kruhki iz 5 žit, melona (1, 6)",
-    "Torek": "pasirana skuta (100g), brusnice (7, 12)",
-    "Sreda": "*bio pšenično sladko pecivo z rdečo peso, ananasov sok (100% sadni delež)",
-    "Četrtek": "lubenica, kos črnega kruha (1)",
-    "Petek": "sadni krožnik (borovnice, breskve, ananas)"
+    "Ponedeljek": "keksi (vaniljevi rogljički), probiotični jogurt (1, 3, 7)",
+    "Torek": "polnozrnati grisini, ananas (1, 6)",
+    "Sreda": "mešano sadje",
+    "Četrtek": "/",
+    "Petek": "/"
   },
-  "weekLabel": "15. 06. 2026 - 19. 06. 2026"
+  "weekLabel": "22. 06. 2026 - 24. 06. 2026"
 }
