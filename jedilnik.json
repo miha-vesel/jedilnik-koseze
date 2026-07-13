@@ -1,6 +1,24 @@
 {
-  "malica": {},
-  "kosilo": {},
-  "popoldne": {},
-  "weekLabel": ""
+  "malica": {
+    "Ponedeljek": "črna bombeta, polpet z brokolijem in cvetačo, zelena solata, paradižnik, sadni čaj, sadje (1, 3, 6, 7)",
+    "Torek": "polnozrnati kosmiči, mleko, banana (1, 7)",
+    "Sreda": "sirova štručka, jabolčni sok 100% sadni delež (redčen z vodo) (1, 7)",
+    "Četrtek": "/",
+    "Petek": "/"
+  },
+  "kosilo": {
+    "Ponedeljek": "mesna enolončnica s krompirjem in tremi vrstami paprike, pisani kruh, čokoladni puding (1, 3, 7, 9)",
+    "Torek": "pirini peresniki z bolonjsko omako, mešana solata (1)",
+    "Sreda": "piščančji ražnjiči, džuveč riž, zelena solata, sadno-žitna rezina (1, 7)",
+    "Četrtek": "/",
+    "Petek": "/"
+  },
+  "popoldne": {
+    "Ponedeljek": "keksi (vaniljevi rogljički), probiotični jogurt (1, 3, 7)",
+    "Torek": "polnozrnati grisini, ananas (1, 6)",
+    "Sreda": "mešano sadje",
+    "Četrtek": "/",
+    "Petek": "/"
+  },
+  "weekLabel": "22. 06. 2026 - 24. 06. 2026"
 }
