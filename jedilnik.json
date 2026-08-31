@@ -1,6 +1,24 @@
 {
-  "malica": {},
-  "kosilo": {},
-  "popoldne": {},
-  "weekLabel": ""
+  "malica": {
+    "Ponedeljek": "/",
+    "Torek": "polnozrnati kosmiči, mleko, banana (1, 7)",
+    "Sreda": "graham kruh, domač ribji namaz, list zelene solate, čaj (1, 3, 7)",
+    "Četrtek": "črni kruh, maslo, *bio marelična marmelada, mleko (1, 7)",
+    "Petek": "ajdov kruh, *bio kisla smetana, paradižnik in paprika, sadje, čaj (1, 7)"
+  },
+  "kosilo": {
+    "Ponedeljek": "/",
+    "Torek": "zelenjavna rižota s piščančjim mesom, zelena solata s paradižnikom (1, 9)",
+    "Sreda": "kremna zelenjavna juha z ajdovo kašo, bolonjska omaka, polnozrnati špageti, zelena solata s koruzo (1, 3, 7, 9, 11)",
+    "Četrtek": "cvetačna kremna juha, oslič v masleni omaki z grahom, pire krompir, mešana solata (1, 7, 9, 4)",
+    "Petek": "sezonska zelenjavna enolončnica s telečjim mesom, polnozrnat kruh, cmoki z jagodnim nadevom (1, 3, 7, 9)"
+  },
+  "popoldne": {
+    "Ponedeljek": "/",
+    "Torek": "grisini s sezamom, sok 100% sadni delež (1, 6, 11)",
+    "Sreda": "ovsena bombeta, lubenica (1)",
+    "Četrtek": "krožnik sveže zelenjave, polbela žemlja (1)",
+    "Petek": "sadni krožnik (mešano sadje)"
+  },
+  "weekLabel": "01. 09. 2026 - 04. 09. 2026"
 }
