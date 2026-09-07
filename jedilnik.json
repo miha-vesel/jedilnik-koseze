@@ -1,24 +1,24 @@
 {
   "malica": {
-    "Ponedeljek": "/",
-    "Torek": "koruzni kosmiči, mleko, banana (1, 7)",
-    "Sreda": "graham kruh, domač ribji namaz, paradižnik, čaj (1, 3, 4, 7)",
-    "Četrtek": "črni kruh, maslo, *bio marelična marmelada, mleko (1, 7)",
-    "Petek": "ajdov kruh, *bio kisla smetana, paradižnik in paprika, sadje, čaj (1, 7)"
+    "Ponedeljek": "*bio pirin zdrob s cimetom, banana (1, 7)",
+    "Torek": "pica margarita, sadni čaj (1, 7)",
+    "Sreda": "črna bombeta, polpet brokoli-cvetača, sveža solata, kečap, čaj, sadje (1, 3, 6, 7, 9, 11)",
+    "Četrtek": "makova štručka, maslo, navadni jogurt (1, 7)",
+    "Petek": "pisani kruh, sir-Gauda, paprika, čaj, sadje (1, 7)"
   },
   "kosilo": {
-    "Ponedeljek": "/",
-    "Torek": "zelenjavna rižota s piščančjim mesom, zelena solata s paradižnikom (1, 9)",
-    "Sreda": "kremna zelenjavna juha z ajdovo kašo, bolonjska omaka, polnozrnati špageti, zelena solata s koruzo (1, 3, 7, 9, 11)",
-    "Četrtek": "cvetačna kremna juha, oslič v masleni omaki z grahom, pire krompir, mešana solata (1, 7, 9, 4)",
-    "Petek": "sezonska zelenjavna enolončnica s telečjim mesom, polnozrnat kruh, cmoki z jagodnim nadevom (1, 3, 7, 9)"
+    "Ponedeljek": "zelenjavna kremna juha, makarnovo meso, zelena solata s koruzo (1,7,9)",
+    "Torek": "goveji trakci v lovski omaki, rizi bizi, mešana solata (1, 7, 9)",
+    "Sreda": "ljubljanska obara, carski praženec z domačo jabolčno čežano (1, 3, 7, 9)",
+    "Četrtek": "goveja juha z rezanci, piščančji dunajski zrezek, pražen krompir, zeljna solata (iz zelja, korenja, jabolka) (1, 3, 7, 9)",
+    "Petek": "brokolijeva kremna juha z ajdovo kašo, pirini njoki, losos v smetanovi omaki, rdeča pesa (1, 4, 7, 9)"
   },
   "popoldne": {
-    "Ponedeljek": "/",
-    "Torek": "grisini s sezamom, sok 100% sadni delež (1, 6, 11)",
-    "Sreda": "ovsena bombeta, lubenica (1)",
-    "Četrtek": "krožnik sveže zelenjave, polbela žemlja (1)",
-    "Petek": "sadni krožnik (mešano sadje)"
+    "Ponedeljek": "črna pletenka s sezamom, paprika (1, 7, 11)",
+    "Torek": "grški navadni jogurt, brusnice in rozine (7, 12)",
+    "Sreda": "slanik, breskev (1)",
+    "Četrtek": "polbela bombeta, mini paradižniki in mozzarella (1, 7)",
+    "Petek": "ajdova štručka z orehi, korenčkove palčke (1, 8)"
   },
-  "weekLabel": "Teden 01. 09. 2026 – 04. 09. 2026"
+  "weekLabel": "Teden 07. 09. 2026 – 11. 09. 2026"
 }
