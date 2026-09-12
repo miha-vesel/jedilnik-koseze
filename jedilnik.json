@@ -1,24 +1,24 @@
 {
   "malica": {
-    "Ponedeljek": "*bio pirin zdrob s cimetom, banana (1, 7)",
-    "Torek": "pica margarita, sadni čaj (1, 7)",
-    "Sreda": "črna bombeta, polpet brokoli-cvetača, sveža solata, kečap, čaj, sadje (1, 3, 6, 7, 9, 11)",
-    "Četrtek": "makova štručka, maslo, navadni jogurt (1, 7)",
-    "Petek": "pisani kruh, sir-Gauda, paprika, čaj, sadje (1, 7)"
+    "Ponedeljek": "buhtelj z marmelado, sok (100% sadni delež), jabolko (1, 3, 7)",
+    "Torek": "rženi kruh, piščančje prsi, kisla kumarica, čaj (1)",
+    "Sreda": "polnozrnat kruh, čokoladni-lešnikov namaz, mleko, ŠS SADJE (1, 5, 7, 8)",
+    "Četrtek": "pirin kruh, sirni namaz z zelišči čaj (1, 7)",
+    "Petek": "sirova štručka, kakav, sadje (1, 7)"
   },
   "kosilo": {
-    "Ponedeljek": "zelenjavna kremna juha, makarnovo meso, zelena solata s koruzo (1,7,9)",
-    "Torek": "goveji trakci v lovski omaki, rizi bizi, mešana solata (1, 7, 9)",
-    "Sreda": "ljubljanska obara, carski praženec z domačo jabolčno čežano (1, 3, 7, 9)",
-    "Četrtek": "goveja juha z rezanci, piščančji dunajski zrezek, pražen krompir, zeljna solata (iz zelja, korenja, jabolka) (1, 3, 7, 9)",
-    "Petek": "brokolijeva kremna juha z ajdovo kašo, pirini njoki, losos v smetanovi omaki, rdeča pesa (1, 4, 7, 9)"
+    "Ponedeljek": "Pakirano-sendvič s sirom in perutninsko salamo in francoski rogljiček (1, 3, 7)",
+    "Torek": "brokolijeva kremna juha z ajdovo kašo, pirini njoki, losos v smetanovi omaki, rdeča pesa (1, 4, 7, 9)",
+    "Sreda": "bučkina kremna juha (hokaido buča) s kruhovimi kockami, dušeno sladko zelje, mlada govedina, pire krompir (1, 7, 9)",
+    "Četrtek": "fižolova enolončnica z drobnimi testeninami in klobaso (piščančjo), domače rožičevo pecivo (1,3,7,9)",
+    "Petek": "zelenjavna juha z lečo, file orade, blitva s krompirjem (1, 3, 4, 7, 9)"
   },
   "popoldne": {
-    "Ponedeljek": "črna pletenka s sezamom, paprika (1, 7, 11)",
-    "Torek": "grški navadni jogurt, brusnice in rozine (7, 12)",
-    "Sreda": "slanik, breskev (1)",
-    "Četrtek": "polbela bombeta, mini paradižniki in mozzarella (1, 7)",
-    "Petek": "ajdova štručka z orehi, korenčkove palčke (1, 8)"
+    "Ponedeljek": "keksi leibniz, sadje (1, 3, 7)",
+    "Torek": "*bio pirini keksi brez dodanega sladkorja, lubenica (1, 3, 7)",
+    "Sreda": "*bio kefir z žiti, kos koruznega kruha (7)",
+    "Četrtek": "*bio pekovsko pecivo z dodatkom korenja, nektarina (1, 7)",
+    "Petek": "skutin zavitek (1, 3, 7)"
   },
-  "weekLabel": "Teden 07. 09. 2026 – 11. 09. 2026"
+  "weekLabel": "Teden 14. 09. 2026 – 18. 09. 2026"
 }
