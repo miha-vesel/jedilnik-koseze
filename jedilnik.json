@@ -1,24 +1,24 @@
 {
   "malica": {
-    "Ponedeljek": "čokolešnik, mleko, banana (1, 6, 7, 8)",
-    "Torek": "sirov burek, *bio navadni jogurt (1, 3, 7)",
-    "Sreda": "*bio pirin mešani kruh, kisla smetana, korenčkove palčke, čaj, ŠS SADJE (1, 7)",
-    "Četrtek": "črna žemlja, sir, kisle kumarice, čaj (1, 7)",
-    "Petek": "rženi mešani kruh, mesno-zelenjavni namaz, čaj, sadje (1, 7)"
+    "Ponedeljek": "ovseni kosmiči na mleku z brusnicami, banana (1, 7, 12)",
+    "Torek": "*bio pekovsko pecivo s semeni, trdo kuhano jajce, paradižnik, zelena solata, čaj (1, 3)",
+    "Sreda": "ajdov kruh, sir, sveža paprika, čaj, ŠS SADJA (1, 7)",
+    "Četrtek": "črni kruh, *bio maslo, *bio marelična marmelada, mleko (1, 7)",
+    "Petek": "kruh s semeni, tuna v kosih, rukola, čaj, sadje (1, 4)"
   },
   "kosilo": {
-    "Ponedeljek": "miljonska juha, testenine-metuljčki z lečo in tuno, zelena solata (1, 3, 4, 7)",
-    "Torek": "zelenjavna enolončnica z ohrovtom in piščancem, domač rižev narastek (1, 3, 7)",
-    "Sreda": "grahova kremna juha z zlatimi kroglicami, piščančji zrezki s curry omako, zelenjavni riž (paprika, grah, korenje), mešana solata (1, 3, 7, 9, 10, 11)",
-    "Četrtek": "mesne kroglice v paradižnikovi omaki, špageti, zelena solata z motovilcem (1, 3, 7, 9)",
-    "Petek": "zelenjavna juha, dušena govedina v omaki, pire krompir s koromačem, zelena solata s koruzo (1, 9)"
+    "Ponedeljek": "goveji golaž, krompirjevi svaljki s skuto, zelena solata, marmorni kolač (predlog 9.b) (1, 3, 7)",
+    "Torek": "čičerikina enolončnica z ribano kašo, palačinke (čokoladno-lešnikov nadev) (predlog 3.a, 3.b, 6.b, 9.a, 7.c, 9.b) (1, 3, 7, 8, 9)",
+    "Sreda": "porova juha, postrv, krompir v kosih z drobnjakom, zelena solata s koruzo (1, 3, 4, 9)",
+    "Četrtek": "korenčkova juha, ajdova kaša z bučkami, piščanec v omaki, zelje v solati (1, 3, 7)",
+    "Petek": "paradižnikova juha z rižem, puranji zrezek v naravni omaki, kuskus, kuhana zelenjava (cvetača, brokoli) (1, 3, 7)"
   },
   "popoldne": {
-    "Ponedeljek": "*bio kamutova presta (1, 7)",
-    "Torek": "prepečenec, melona (1)",
-    "Sreda": "hrustljavi kruhki iz 5 žit, breskev (1, 6)",
-    "Četrtek": "koruzna bombeta, sveža zelenjava (1)",
-    "Petek": "pasirana skuta Mu (7)"
+    "Ponedeljek": "črna žemlja, topljen sir, jabolko (1, 7)",
+    "Torek": "*bio kifeljc z dodatkom korenja, melona (1, 7)",
+    "Sreda": "tekoči probiotični jogurt, kos pisanega kruha (1, 7)",
+    "Četrtek": "zelenjavni krožnik-surova kumara, korenček, paprika, košček graham kruha (1)",
+    "Petek": "*bio sadni jogurt, koruzna bombeta (1, 7)"
   },
-  "weekLabel": "Teden 21. 09. 2026 – 25. 09. 2026"
+  "weekLabel": "Teden 28. 09. 2026 – 02. 10. 2026"
 }
