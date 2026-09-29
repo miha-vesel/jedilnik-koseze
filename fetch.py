@@ -166,6 +166,7 @@ def generate_pdf(data, output_path="jedilnik.pdf"):
 
     story = []
     story.append(Paragraph("Tedenski jedilnik · OŠ Koseze", title_style))
+    story.append(Spacer(1, 0.4*cm))
     story.append(Paragraph(f"Teden: {data.get('weekLabel', '')}", subtitle_style))
 
     header_row = [
