@@ -1,6 +1,9 @@
 import subprocess
 import json
 import re
+import os
+import urllib.request
+import tarfile
 from html.parser import HTMLParser
 
 URL = "https://www.oskoseze.si/sl/jedilnik/"
@@ -102,6 +105,28 @@ def parse(html):
     return result
 
 
+def setup_fonts():
+    font_dir = "/tmp/fonts"
+    os.makedirs(font_dir, exist_ok=True)
+    regular = os.path.join(font_dir, "DejaVuSans.ttf")
+    bold = os.path.join(font_dir, "DejaVuSans-Bold.ttf")
+
+    if not os.path.exists(regular):
+        print("Downloading fonts...")
+        tar_path = "/tmp/dejavu.tar.bz2"
+        urllib.request.urlretrieve(
+            "https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.tar.bz2",
+            tar_path
+        )
+        with tarfile.open(tar_path, "r:bz2") as tar:
+            for member in tar.getmembers():
+                if member.name.endswith("DejaVuSans.ttf") or member.name.endswith("DejaVuSans-Bold.ttf"):
+                    member.name = os.path.basename(member.name)
+                    tar.extract(member, font_dir)
+        print("Fonts ready.")
+    return regular, bold
+
+
 def generate_pdf(data, output_path="jedilnik.pdf"):
     from reportlab.lib.pagesizes import A4, landscape
     from reportlab.lib import colors
@@ -109,6 +134,12 @@ def generate_pdf(data, output_path="jedilnik.pdf"):
     from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
     from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
     from reportlab.lib.enums import TA_CENTER
+    from reportlab.pdfbase import pdfmetrics
+    from reportlab.pdfbase.ttfonts import TTFont
+
+    regular, bold = setup_fonts()
+    pdfmetrics.registerFont(TTFont('Regular', regular))
+    pdfmetrics.registerFont(TTFont('Bold', bold))
 
     GREEN_DARK = colors.HexColor("#1a472a")
     GREEN_MID  = colors.HexColor("#2d6a4f")
@@ -126,18 +157,12 @@ def generate_pdf(data, output_path="jedilnik.pdf"):
     )
     styles = getSampleStyleSheet()
 
-    title_style = ParagraphStyle('T', parent=styles['Normal'],
-        fontSize=18, textColor=GREEN_DARK, fontName='Helvetica-Bold', spaceAfter=4)
-    subtitle_style = ParagraphStyle('S', parent=styles['Normal'],
-        fontSize=11, textColor=colors.HexColor("#555555"), fontName='Helvetica', spaceAfter=16)
-    cell_style = ParagraphStyle('C', parent=styles['Normal'],
-        fontSize=9, fontName='Helvetica', leading=13)
-    header_style = ParagraphStyle('H', parent=styles['Normal'],
-        fontSize=10, fontName='Helvetica-Bold', textColor=colors.white, alignment=TA_CENTER)
-    day_style = ParagraphStyle('D', parent=styles['Normal'],
-        fontSize=10, fontName='Helvetica-Bold', textColor=GREEN_DARK, alignment=TA_CENTER)
-    footer_style = ParagraphStyle('F', parent=styles['Normal'],
-        fontSize=8, textColor=colors.gray, fontName='Helvetica')
+    title_style   = ParagraphStyle('T', parent=styles['Normal'], fontSize=18, textColor=GREEN_DARK, fontName='Bold', spaceAfter=4)
+    subtitle_style = ParagraphStyle('S', parent=styles['Normal'], fontSize=11, textColor=colors.HexColor("#555555"), fontName='Regular', spaceAfter=16)
+    cell_style    = ParagraphStyle('C', parent=styles['Normal'], fontSize=9, fontName='Regular', leading=13)
+    header_style  = ParagraphStyle('H', parent=styles['Normal'], fontSize=10, fontName='Bold', textColor=colors.white, alignment=TA_CENTER)
+    day_style     = ParagraphStyle('D', parent=styles['Normal'], fontSize=10, fontName='Bold', textColor=GREEN_DARK, alignment=TA_CENTER)
+    footer_style  = ParagraphStyle('F', parent=styles['Normal'], fontSize=8, textColor=colors.gray, fontName='Regular')
 
     story = []
     story.append(Paragraph("Tedenski jedilnik · OŠ Koseze", title_style))
@@ -163,15 +188,13 @@ def generate_pdf(data, output_path="jedilnik.pdf"):
     table = Table(table_data, colWidths=col_w, repeatRows=1)
     table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), GREEN_DARK),
-        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
         ('ALIGN', (0,0), (-1,0), 'CENTER'),
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
         ('TOPPADDING', (0,0), (-1,0), 10), ('BOTTOMPADDING', (0,0), (-1,0), 10),
         ('LINEBELOW', (0,0), (-1,0), 1.5, GREEN_MID),
         ('BACKGROUND', (0,1), (0,-1), GREEN_PALE),
         ('ALIGN', (0,1), (0,-1), 'CENTER'),
-        *[('BACKGROUND', (1,i), (-1,i), GRAY_LIGHT if i%2==0 else colors.white)
-          for i in range(1, 6)],
+        *[('BACKGROUND', (1,i), (-1,i), GRAY_LIGHT if i%2==0 else colors.white) for i in range(1,6)],
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#cccccc")),
         ('TOPPADDING', (0,1), (-1,-1), 10), ('BOTTOMPADDING', (0,1), (-1,-1), 10),
         ('LEFTPADDING', (0,0), (-1,-1), 10), ('RIGHTPADDING', (0,0), (-1,-1), 10),
