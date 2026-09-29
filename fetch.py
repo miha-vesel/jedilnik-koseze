@@ -45,7 +45,6 @@ def parse(html):
     text = parser.get_text()
     lines = [l.strip() for l in text.splitlines() if l.strip()]
 
-    # Week label
     week_label = ""
     for line in lines:
         m = re.search(r'\d{2}\.\s*\d{2}\.\s*\d{4}\s*[-–]\s*\d{2}\.\s*\d{2}\.\s*\d{4}', line)
@@ -53,7 +52,6 @@ def parse(html):
             week_label = line.replace("JEDILNIK","").replace("(","").replace(")","").strip()
             break
 
-    # Find table starts by | DAN | header rows
     table_starts = []
     for i, line in enumerate(lines):
         if re.search(r'\|\s*DAN\s*\|', line, re.I):
@@ -73,10 +71,8 @@ def parse(html):
                         result[keys[ti]][day] = meal
                     break
 
-    # Fallback: HTML tables
     if not result["malica"]:
-        from html.parser import HTMLParser as HP
-        class TableParser(HP):
+        class TableParser(HTMLParser):
             def __init__(self):
                 super().__init__()
                 self.tables = []
@@ -84,23 +80,18 @@ def parse(html):
                 self.current_row = []
                 self.current_cell = []
                 self.in_cell = False
-                self.depth = 0
             def handle_starttag(self, tag, attrs):
-                if tag == "table": self.current_table = []; self.depth += 1
+                if tag == "table": self.current_table = []
                 elif tag == "tr": self.current_row = []
                 elif tag in ("td","th"): self.in_cell = True; self.current_cell = []
             def handle_endtag(self, tag):
-                if tag == "table":
-                    self.tables.append(self.current_table)
-                    self.depth -= 1
-                elif tag == "tr" and self.current_row:
-                    self.current_table.append(self.current_row)
+                if tag == "table": self.tables.append(self.current_table)
+                elif tag == "tr" and self.current_row: self.current_table.append(self.current_row)
                 elif tag in ("td","th"):
                     self.current_row.append(" ".join(self.current_cell).strip())
                     self.in_cell = False
             def handle_data(self, data):
                 if self.in_cell: self.current_cell.append(data.strip())
-
         tp = TableParser()
         tp.feed(html)
         for ti, table in enumerate(tp.tables[:3]):
@@ -110,13 +101,95 @@ def parse(html):
 
     return result
 
+
+def generate_pdf(data, output_path="jedilnik.pdf"):
+    from reportlab.lib.pagesizes import A4, landscape
+    from reportlab.lib import colors
+    from reportlab.lib.units import cm
+    from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+    from reportlab.lib.enums import TA_CENTER
+
+    GREEN_DARK = colors.HexColor("#1a472a")
+    GREEN_MID  = colors.HexColor("#2d6a4f")
+    GREEN_PALE = colors.HexColor("#d8f3dc")
+    GRAY_LIGHT = colors.HexColor("#f5f5f0")
+
+    def strip_allergens(text):
+        return re.sub(r'\s*\([0-9,\s]+\)\s*$', '', text).replace('*', '').strip()
+
+    doc = SimpleDocTemplate(
+        output_path,
+        pagesize=landscape(A4),
+        leftMargin=1.5*cm, rightMargin=1.5*cm,
+        topMargin=1.5*cm, bottomMargin=1.5*cm,
+    )
+    styles = getSampleStyleSheet()
+
+    title_style = ParagraphStyle('T', parent=styles['Normal'],
+        fontSize=18, textColor=GREEN_DARK, fontName='Helvetica-Bold', spaceAfter=4)
+    subtitle_style = ParagraphStyle('S', parent=styles['Normal'],
+        fontSize=11, textColor=colors.HexColor("#555555"), fontName='Helvetica', spaceAfter=16)
+    cell_style = ParagraphStyle('C', parent=styles['Normal'],
+        fontSize=9, fontName='Helvetica', leading=13)
+    header_style = ParagraphStyle('H', parent=styles['Normal'],
+        fontSize=10, fontName='Helvetica-Bold', textColor=colors.white, alignment=TA_CENTER)
+    day_style = ParagraphStyle('D', parent=styles['Normal'],
+        fontSize=10, fontName='Helvetica-Bold', textColor=GREEN_DARK, alignment=TA_CENTER)
+    footer_style = ParagraphStyle('F', parent=styles['Normal'],
+        fontSize=8, textColor=colors.gray, fontName='Helvetica')
+
+    story = []
+    story.append(Paragraph("Tedenski jedilnik · OŠ Koseze", title_style))
+    story.append(Paragraph(f"Teden: {data.get('weekLabel', '')}", subtitle_style))
+
+    header_row = [
+        Paragraph("DAN", header_style),
+        Paragraph("MALICA", header_style),
+        Paragraph("KOSILO", header_style),
+        Paragraph("POPOLDANSKA MALICA", header_style),
+    ]
+    table_data = [header_row]
+    for day in DAYS:
+        table_data.append([
+            Paragraph(day, day_style),
+            Paragraph(strip_allergens(data["malica"].get(day, "—")), cell_style),
+            Paragraph(strip_allergens(data["kosilo"].get(day, "—")), cell_style),
+            Paragraph(strip_allergens(data["popoldne"].get(day, "—")), cell_style),
+        ])
+
+    page_w = landscape(A4)[0] - 3*cm
+    col_w = [3.5*cm] + [(page_w - 3.5*cm)/3]*3
+    table = Table(table_data, colWidths=col_w, repeatRows=1)
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), GREEN_DARK),
+        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+        ('ALIGN', (0,0), (-1,0), 'CENTER'),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('TOPPADDING', (0,0), (-1,0), 10), ('BOTTOMPADDING', (0,0), (-1,0), 10),
+        ('LINEBELOW', (0,0), (-1,0), 1.5, GREEN_MID),
+        ('BACKGROUND', (0,1), (0,-1), GREEN_PALE),
+        ('ALIGN', (0,1), (0,-1), 'CENTER'),
+        *[('BACKGROUND', (1,i), (-1,i), GRAY_LIGHT if i%2==0 else colors.white)
+          for i in range(1, 6)],
+        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#cccccc")),
+        ('TOPPADDING', (0,1), (-1,-1), 10), ('BOTTOMPADDING', (0,1), (-1,-1), 10),
+        ('LEFTPADDING', (0,0), (-1,-1), 10), ('RIGHTPADDING', (0,0), (-1,-1), 10),
+    ]))
+    story.append(table)
+    story.append(Spacer(1, 0.5*cm))
+    story.append(Paragraph("* Alergeni so razvidni iz celotnega jedilnika na spletni strani šole: www.oskoseze.si", footer_style))
+    doc.build(story)
+    print(f"PDF generated: {output_path}")
+
+
 if __name__ == "__main__":
     html = fetch_html()
     data = parse(html)
+
     with open("jedilnik.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    print("OK:", data.get("weekLabel", "?"))
-    for k in ["malica", "kosilo", "popoldne"]:
-        print(f"\n{k.upper()}:")
-        for d, m in data[k].items():
-            print(f"  {d}: {m}")
+    print("JSON OK:", data.get("weekLabel", "?"))
+
+    generate_pdf(data, "jedilnik.pdf")
+    print("Done.")
