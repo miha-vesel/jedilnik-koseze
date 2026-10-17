@@ -1,24 +1,24 @@
 {
   "malica": {
-    "Ponedeljek": "mlečna prosena kaša z rozinami, banana (1, 7, 12)",
-    "Torek": "polbeli kruh, skutin namaz z bučnimi semeni (sladka skuta kmetije Flis), čaj (1, 7)",
-    "Sreda": "črni kruh, pašteta (kokošja), paradižnik, čaj, korenje, ŠS SADJA (1, 7)",
-    "Četrtek": "pisani kruh, mesno-zelenjavni namaz, čaj (1, 3, 7, 10)",
-    "Petek": "*bio kifeljc z dodatkom korenja, sadni jogurt kmetije Flis (borovnica / marelica), sadje (1, 3, 7)"
+    "Ponedeljek": "*bio pirin cesarski buhtelj z brusnicami in čokoladnimi zrni, sadni čaj, sadje (1, 3, 7, 12)",
+    "Torek": "pisani kruh, domač mlečni namaz z drobnjakom, paprika, čaj (1, 7)",
+    "Sreda": "*bio slanik, mleko, ŠS SADJA (1)",
+    "Četrtek": "kajzerica, piščančje prsi, olive, limonada (1)",
+    "Petek": "polnozrnati kruh, kuhano jajce, planinski čaj, sadje (1, 3, 7)"
   },
   "kosilo": {
-    "Ponedeljek": "cvetačna juha, testenine-svedrčki s carbonaro, zeljna solata (1, 3, 7)",
-    "Torek": "brokolijeva kremna juha, ocvrta piščančja bedra, riž z zelenjavo, rdeča pesa (1, 3, 7, 9)",
-    "Sreda": "lignji v paradižnikovi omaki, polenta, zelena solata s korenjem (1, 3, 7, 14)",
-    "Četrtek": "krompirjev golaž z govejim mesom, črn kruh, francoski rogljiček z marmelado (1, 3, 7, 9)",
-    "Petek": "bučna kremna juha z zlatimi kroglicami, puranji zrezki v naravni omaki, kruhov cmok, zelena solata z motovilcem in koruzo (1, 3, 7)"
+    "Ponedeljek": "ITALIJANSKI PONEDELJEK italijanska juha, njoki s paradižnikovo omako in baziliko, parmezan, zelena solata (1, 3, 7, 9)",
+    "Torek": "BOSANSKI TOREK bosanski lonec (teletina, krompir, zelenjava), sadni kolač (1, 3, 7, 9)",
+    "Sreda": "ČEŠKA SREDA svinjska pečenka, kruhovi cmoki, dušeno zelje, solata (1, 3, 7)",
+    "Četrtek": "GRŠKI ČETRTEK musaka (moussaka),tzatziki (solata s kumaro, jogurtom) (1, 3, 7)",
+    "Petek": "SLOVENSKI PETEK ričet s suhim mesom, polnozrnati kruh, sladek skutin štrukelj z maslenimi drobtinami (1, 3, 7)"
   },
   "popoldne": {
-    "Ponedeljek": "brizgani keksi, sadje (1, 3, 7)",
-    "Torek": "polnozrnata žemlja, sliva (1)",
-    "Sreda": "grški jogurt (naravni), ovseni kosmiči (1, 7)",
-    "Četrtek": "crispy kruhek, sok 100% sadni delež (pomaranča) (1, 6)",
-    "Petek": "suho sadje- jabolčni krhlji, suhe hruške, suhe banane, suhe marelice (12)"
+    "Ponedeljek": "mlečni kruhov polžek, čokoladno mleko (1, 7)",
+    "Torek": "*bio pirini keksi brez dodanega sladkorja, mleko (1, 7)",
+    "Sreda": "grisini s sezamom, hruška (1, 6, 11)",
+    "Četrtek": "črna žemlja, *bio sadni smuti (1, 7)",
+    "Petek": "mlečni riž v lončku (1, 7)"
   },
-  "weekLabel": "Teden 12. 10. 2026 – 16. 10. 2026"
+  "weekLabel": "Teden 19. 10. 2026 – 23. 10. 2026"
 }
