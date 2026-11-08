@@ -1,24 +1,24 @@
 {
   "malica": {
-    "Ponedeljek": "pirin zdrob na *bio mleku , kakavov posip, banana (1, 7)",
-    "Torek": "pisani kruh, mozzarela kroglice, sveža kumara, paprika, čaj (1, 7)",
-    "Sreda": "pisani kruh, kuhan pršut, kisle kumarice, sadni čaj, ŠS SADJA (1, 7)",
-    "Četrtek": "koruzni kruh, meden namaz, mleko (1, 7)",
-    "Petek": "*bio mafini z gozdnimi sadeži , bela kava, sadje (1, 3, 7)"
+    "Ponedeljek": "sirova štručka, kakav, ŠS SADJA (1, 3, 7)",
+    "Torek": "polnozrnati kruh, sardelin namaz z jajcem, čaj, (1, 3, 4, 7)",
+    "Sreda": "polnozrnata žemlja, posebna piščančja salama z vrtninami, *eko paprika , čaj, sadje (1)",
+    "Četrtek": "bombeta, sojin polpet, zelena solata, ketchup, čaj (1, 3, 6, 7)",
+    "Petek": "črni kruh, liptaver namaz, čaj, zelenjava (1, 3, 7, 10, 11)"
   },
   "kosilo": {
-    "Ponedeljek": "polenta, piščančji paprikaš, zelena solata z radičem, sladoled (1, 7)",
-    "Torek": "špinačna kremna juha z zlatimi kroglicami, bolonjska omaka s polnozrnatimi testeninami, mešana solata (zelena s paradižnikom) (1, 7, 9)",
-    "Sreda": "telečja obara z ajdovimi žličniki, polnozrnat kruh, domače rožičevo pecivo (1, 3, 7)",
-    "Četrtek": "čista juha z zvezdicami, rižota z kozicami in zelenjavo, zeljna solata (1, 2, 9)",
-    "Petek": "prežganka, dušeno kislo zelje, matevž, pečenica (svinjsko meso) (1, 3, 7)"
+    "Ponedeljek": "ričet z zelenjavo in dimljeno piščančje meso, jabolčni zavitek (1, 3, 7, 9)",
+    "Torek": "paradižnikova juha z zvezdicami, zelenjavno-mesna (puran) rižota (3 žita), mešana solata (1, 3, 7, 9)",
+    "Sreda": "martinova pojedina- bučna juha, mlinci, rdeče zelje, pečen piščanec (1, 3, 7)",
+    "Četrtek": "boranja, pirin kruh, cmoki z mareličnim nadevom z maslenimi drobtinicami (1,3,7,9)",
+    "Petek": "lečina juha, pečen losos, pire krompir, baby korenje (z maslom) (1, 3, 4, 7)"
   },
   "popoldne": {
-    "Ponedeljek": "suho sadje-suhe hruške in jabolka, kos pisanega kruha (1, 12)",
-    "Torek": "crispy kruhek, ananas (1)",
-    "Sreda": "probiotični navadni jogurt, *bio kokosov zavitek (1, 3, 7)",
-    "Četrtek": "*bio sadni sok (100% sadni delež), črna žemlja (1)",
-    "Petek": "koruzna bombeta, sirni smetanov namaz (1, 7)"
+    "Ponedeljek": "kislo mleko, polnozrnata žemlja (1, 7)",
+    "Torek": "polnozrnati slanik (1)",
+    "Sreda": "jogurt z žiti (1, 7)",
+    "Četrtek": "polnozrnati keksi, mleko (1, 3, 7)",
+    "Petek": "*bio bananin mafin z dodatkom maka (1, 3, 7)"
   },
-  "weekLabel": "Teden 02. 11. 2026 – 06. 11. 2026"
+  "weekLabel": "Teden 09. 11. 2026 – 13. 11. 2026"
 }
