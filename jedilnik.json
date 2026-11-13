@@ -1,24 +1,24 @@
 {
   "malica": {
-    "Ponedeljek": "sirova štručka, kakav, ŠS SADJA (1, 3, 7)",
-    "Torek": "polnozrnati kruh, sardelin namaz z jajcem, čaj, (1, 3, 4, 7)",
-    "Sreda": "polnozrnata žemlja, posebna piščančja salama z vrtninami, *eko paprika , čaj, sadje (1)",
-    "Četrtek": "bombeta, sojin polpet, zelena solata, ketchup, čaj (1, 3, 6, 7)",
-    "Petek": "črni kruh, liptaver namaz, čaj, zelenjava (1, 3, 7, 10, 11)"
+    "Ponedeljek": "koruzni kosmiči, mleko, banana (7)",
+    "Torek": "marmorni kolač, *bio mleko (1, 3, 7)",
+    "Sreda": "makovka, *bio maslo, navadni jogurt kmetije Flis, ŠS SADJA (1, 7)",
+    "Četrtek": "ržena žemlja, kuhan pršut, mini paradižniki, čaj (1)",
+    "Petek": "TSZ- črn kruh, mleko, med, maslo, jabolko (1, 7) malica- polnozrnati slanik (1)"
   },
   "kosilo": {
-    "Ponedeljek": "ričet z zelenjavo in dimljeno piščančje meso, jabolčni zavitek (1, 3, 7, 9)",
-    "Torek": "paradižnikova juha z zvezdicami, zelenjavno-mesna (puran) rižota (3 žita), mešana solata (1, 3, 7, 9)",
-    "Sreda": "martinova pojedina- bučna juha, mlinci, rdeče zelje, pečen piščanec (1, 3, 7)",
-    "Četrtek": "boranja, pirin kruh, cmoki z mareličnim nadevom z maslenimi drobtinicami (1,3,7,9)",
-    "Petek": "lečina juha, pečen losos, pire krompir, baby korenje (z maslom) (1, 3, 4, 7)"
+    "Ponedeljek": "goveji zrezki, rizi bizi, zelena solata z koruzo (1, 3, 7, 9)",
+    "Torek": "lečina juha, musaka, zelena solata s čičeriko (1, 3, 7)",
+    "Sreda": "korenčkova juha z zdrobom, pečena piščančja stegna, zeljne krpice, zelena solata s fižolom (1, 3, 7)",
+    "Četrtek": "zelenjavna enolončnica s stročnicami, carski praženec z marelično marmelado (1, 3, 7, 9)",
+    "Petek": "zelenjavni bulgur s piščancem, jogurtov preliv, zeljna solata (1, 7)"
   },
   "popoldne": {
-    "Ponedeljek": "kislo mleko, polnozrnata žemlja (1, 7)",
-    "Torek": "polnozrnati slanik (1)",
-    "Sreda": "jogurt z žiti (1, 7)",
-    "Četrtek": "polnozrnati keksi, mleko (1, 3, 7)",
-    "Petek": "*bio bananin mafin z dodatkom maka (1, 3, 7)"
+    "Ponedeljek": "*bio cesarski pirin buhtelj s čokoladnimi zrni (1, 3, 7)",
+    "Torek": "bela žemlja, tunina pašteta (1, 4, 6, 7)",
+    "Sreda": "ajdova bombeta, topljeni sir za mazanje (1, 7)",
+    "Četrtek": "sadni jogurt kmetije Flis, brusnice (1, 12)",
+    "Petek": "sadje (1)"
   },
-  "weekLabel": "Teden 09. 11. 2026 – 13. 11. 2026"
+  "weekLabel": "Teden 16. 11. 2026 – 20. 11. 2026"
 }
