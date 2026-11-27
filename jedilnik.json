@@ -1,24 +1,24 @@
 {
   "malica": {
-    "Ponedeljek": "mlečna prosena kaša z brusnicami, banana (1,7,12)",
-    "Torek": "sadni jougrt, sezamova štručka (1, 7, 11)",
-    "Sreda": "pisani kruh, kajmak, paprika v kisu, čaj, ŠS SADJA (1, 7)",
-    "Četrtek": "polbeli kruh, maslo, jagodna marmelada, mleko (1, 7)",
-    "Petek": "polbela bombeta, suha ogrska salama, kisla kumarica, čaj (1)"
+    "Ponedeljek": "mlečni pirin zdrob kakavov posip, banana (1, 7, 12)",
+    "Torek": "kruh s semeni, domač liptaver namaz, čaj (1, 7)",
+    "Sreda": "sezamova bombeta, piščančje prsi, kisle kumarice, čaj, ŠS ZELENJAVA (1, 6, 11)",
+    "Četrtek": "polnozrnati burek z jabolki, navadni jogurt (1, 3, 7)",
+    "Petek": "parkelj, kakav, suhi krhlji-jabolka, suhe slive (1, 7, 12)"
   },
   "kosilo": {
-    "Ponedeljek": "cvetačna juha, piščanec po mongolsko, riž, mešana solata (1, 6, 7, 9, 10)",
-    "Torek": "goveja juha z rezanci, pražen krompir, govedina (iz juhe), kremna špinača (1, 3, 9)",
-    "Sreda": "segedin golaž, polenta, čokoladni francoski rogljiček (1, 2, 3, 4, 7)",
-    "Četrtek": "bučna juha, puranji zrezki v naravni omaki, zdrobov cmok, kuhan stročji fižol (1, 7, 9)",
-    "Petek": "fižolovakuha z ribano kašo, čufti, testenine, zelena solata (1, 3, 7)"
+    "Ponedeljek": "korenčkova juha, govedina stroganov, rizi bizi, zeljna solata (1, 3, 7)",
+    "Torek": "paradižnikova juha, paniran oslič, krompirjeva solata (1, 7)",
+    "Sreda": "zelenjavna kremna juha z ajdovo kašo, testenine (svedri) carbonara, zelena solata s fižolom (3, 7)",
+    "Četrtek": "jota s kislim zeljem, pehtranova potica (1, 3, 7)",
+    "Petek": "čičerikina juha z zvezdicami, piščančji file v naravni omaki, kus-kus , rdeča pesa (1, 3, 7)"
   },
   "popoldne": {
-    "Ponedeljek": "prepečenec, *bio kefir z okusom breskve (1, 7)",
-    "Torek": "*bio pica margarita (1, 7)",
-    "Sreda": "zelenjavni krožnik, graham štručka (1)",
-    "Četrtek": "hrustljavi kruhki iz 5 žit, sadje (1)",
-    "Petek": "*bio makovo pecivo (1)"
+    "Ponedeljek": "*bio kakavo pekovsko pecivo , jabolko (1, 3, 7)",
+    "Torek": "čokoladni puding brez smetane (7)",
+    "Sreda": "banana",
+    "Četrtek": "*bio preste (1)",
+    "Petek": "*bio sadni mafin (1, 3, 7)"
   },
-  "weekLabel": "Teden 23. 11. 2026 – 27. 11. 2026"
+  "weekLabel": "Teden 30. 11. 2026 – 04. 12. 2026"
 }
